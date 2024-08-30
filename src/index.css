@@ -148,9 +148,14 @@ body {
 
 
 @media screen and (max-width: 549px) {
+
+    body {
+        height: 100vh;
+    }
+
     .main-container {
         width: 320px;
-        margin: 40px 0px;
+        margin: 30px 0px;
         box-sizing: border-box;
     }
 
