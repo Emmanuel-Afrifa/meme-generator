@@ -172,4 +172,8 @@ body {
         box-sizing: border-box;
         margin-bottom: 10px;
     }
+
+    .meme--text {
+        font-size: 1.4em;
+    }
 }
