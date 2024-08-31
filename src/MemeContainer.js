@@ -1,9 +1,11 @@
 import React from "react";
 import newMemeImage from "./images/Get a new meme image 🖼.png";
+import ImageCanvas from "./ImageCanvas";
 // import memeImage from "./images/memeimg.png";
 // import memeData from "./memesData";
 
 export default function MemeContainer(){
+    
     const [allmeme, setAllMeme] = React.useState([])
     const [meme, setMeme] = React.useState({
         topText: "",
@@ -70,13 +72,14 @@ export default function MemeContainer(){
                     />
                 </div>
             </div>
-
             <button className="new-meme-button" onClick={getRandomMeme}><img src={newMemeImage} alt=""/></button>
             <div className="meme">
                 <img src={meme.randomImage} alt="meme-image" className="meme-image"/>  
                 <h2 className="meme--text top">{meme.topText}</h2>
                 <h2 className="meme--text bottom">{meme.bottomText}</h2>
+                <ImageCanvas meme={meme} />
             </div>
+            
         </div>
     )
 }
