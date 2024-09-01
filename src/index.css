@@ -147,6 +147,7 @@ button {
 }
 
 .mc {
+    margin-top: 5px;
     width: 470px;
     border: none;
     border-radius: 5px;
@@ -202,5 +203,9 @@ button {
 
     .mc {
         width: 100%;
+    }
+
+    .new-meme-button {
+        margin-top: 1px;
     }
 }
