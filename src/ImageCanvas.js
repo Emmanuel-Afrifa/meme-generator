@@ -38,7 +38,7 @@ export default function ImageCanvas(props){
             img.onload = () => {
                 canvas.height = Math.ceil((img.naturalHeight * canvas.clientWidth) / img.naturalWidth) + 10;
                 ctx.drawImage(img, 0,0, canvas.width, canvas.height);
-                ctx.font = "1em impact"
+                ctx.font = "bold 1em impact"
                 // ctx.lineWidth = "0";
                 ctx.shadowOffsetY = 2;
                 ctx.shadowOffsetX = 2;
