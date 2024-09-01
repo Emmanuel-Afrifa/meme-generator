@@ -99,6 +99,11 @@ button {
     border-radius: 5px;
     cursor: pointer;
     border: none;
+    transition: 0.1s;
+}
+
+button:hover {
+    background: linear-gradient(270deg, #672280, #A626D3);
 }
 
 .meme-image {

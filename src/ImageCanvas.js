@@ -7,6 +7,7 @@ export default function ImageCanvas(props){
         {
             //  creating the image
             const img = new Image();
+            img.setAttribute('crossOrigin', 'anonymous')
             img.src = props.meme.randomImage;
             
 
@@ -61,18 +62,18 @@ export default function ImageCanvas(props){
         [props.meme]
     )
 
-    // function downloadImage(){
-    //     const link = document.createElement("a");
-    //     link.href = canvasRef.current.toDataURL('image/png');
-    //     link.download = "meme-image.png";
-    //     link.click();
-    // }
+    function downloadImage(){
+        const link = document.createElement("a");
+        link.href = canvasRef.current.toDataURL('image/png');
+        link.download = "meme-image.png";
+        link.click();
+    }
     
 
     return (
         <div>
             <canvas className="mc" ref={canvasRef}></canvas>
-            <button className="download-button">Download</button>
+            <button className="download-button" onClick={downloadImage}>Download</button>
         </div>
     )
     
