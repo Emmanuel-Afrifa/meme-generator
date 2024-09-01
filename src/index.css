@@ -29,7 +29,7 @@ body {
     justify-content: center;
 }
 
-.header-title {
+.header-title  {
     height: 40px;
     display: flex;
     align-items: center;
@@ -90,7 +90,7 @@ body {
 }
 
 
-.new-meme-button {
+button {
     background: linear-gradient(90deg, #672280, #A626D3);
     border: none;
     width: 100%;
@@ -149,6 +149,14 @@ body {
 .mc {
     width: 470px;
     border: none;
+    border-radius: 5px;
+}
+
+.download-button {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: white;
 }
 
 
@@ -194,6 +202,5 @@ body {
 
     .mc {
         width: 100%;
-        border: 1px solid black;
     }
 }

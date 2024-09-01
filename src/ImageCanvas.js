@@ -13,59 +13,67 @@ export default function ImageCanvas(props){
             const canvas = canvasRef.current;
             const ctx = canvas.getContext('2d');
             
-             
-            
-            // function wrapText(ctx, text, x, y, lineheight, maxwidth){
-            //     const words = text.split(" ");
-            //     let line = '';
-            //     let lineArray = [];
-                
-            //     for (let i = 0; i<words.length; i++){
-            //         const lineText = line + words[i] + ' ';
-            //         let lineTextWidth = ctx.measureText(lineText).width;
-
-
-
-            //         if (lineTextWidth > maxwidth && i > 0){
-            //             lineArray.push(line);
-            //             line = words[i] + ' ';
-            //         }
-            //         else {
-            //             line = lineText;
-            //         }
-            //         ctx.fillText(line, x, y);
-            //     }
-            //     lineArray.push(line)
-
-            //     for (let k = 0; k < lineArray.length; k++) {
-            //         ctx.fillText(lineArray[k], x, y + (k * lineheight));
-            //     }
-            // }
+            function wrapText(context, text, x, y, maxWidth, lineHeight) {
+                const words = text.split(' ');
+                let line = '';
+                let testLine = '';
+                let testWidth = 0;
+    
+                for (let n = 0; n < words.length; n++) {
+                    testLine = line + words[n] + ' ';
+                    testWidth = context.measureText(testLine).width;
+                    if (testWidth > maxWidth && n > 0) {
+                        context.fillText(line, x, y);
+                        line = words[n] + ' ';
+                        y += lineHeight;
+                    } else {
+                        line = testLine;
+                    }
+                }
+                context.fillText(line, x, y);
+            }
+                 
     
             img.onload = () => {
                 canvas.height = Math.ceil((img.naturalHeight * canvas.clientWidth) / img.naturalWidth) + 10;
                 ctx.drawImage(img, 0,0, canvas.width, canvas.height);
                 ctx.font = "1em impact"
-                ctx.shadowOffsetY = 5;
-                ctx.shadowOffsetX = 5;
+                // ctx.lineWidth = "0";
+                ctx.shadowOffsetY = 2;
+                ctx.shadowOffsetX = 2;
+                ctx.shadowBlur = 1;
+                ctx.shadowColor = "black"
                 ctx.textAlign = 'center';
-                ctx.shadowBlur = 5;
                 ctx.fillStyle = "white";
                 const x = canvas.width / 2;
-                const y_up = 40;
-                const y_down = canvas.height - 20;
-                // wrapText(ctx, props.meme.topText.toUpperCase(), x, y_up, 10, 430)
-                // wrapText(ctx, props.meme.bottomText.toUpperCase(), x, y_down, 10, 430)
-                ctx.fillText(props.meme.topText.toUpperCase(), x, y_up)
-                ctx.fillText(props.meme.bottomText.toUpperCase(), x, y_down)
+                const y_up = 20;
+                const y_down = canvas.height - 60;
+                wrapText(ctx, props.meme.topText.toUpperCase(), x, y_up, 280, 25);
+                wrapText(ctx, props.meme.bottomText.toUpperCase(), x, y_down, 280, 25);
+            
+                // ctx.fillText(props.meme.topText.toUpperCase(), x, y_up)
+                // ctx.fillText(props.meme.bottomText.toUpperCase(), x, y_down)
 
             }
+
+            
         },
         [props.meme]
     )
 
+    // function downloadImage(){
+    //     const link = document.createElement("a");
+    //     link.href = canvasRef.current.toDataURL('image/png');
+    //     link.download = "meme-image.png";
+    //     link.click();
+    // }
+    
+
     return (
-        <canvas className="mc" ref={canvasRef}></canvas>
+        <div>
+            <canvas className="mc" ref={canvasRef}></canvas>
+            <button className="download-button">Download</button>
+        </div>
     )
     
 }

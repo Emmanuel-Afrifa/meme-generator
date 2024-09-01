@@ -74,12 +74,11 @@ export default function MemeContainer(){
             </div>
             <button className="new-meme-button" onClick={getRandomMeme}><img src={newMemeImage} alt=""/></button>
             <div className="meme">
-                <img src={meme.randomImage} alt="meme-image" className="meme-image"/>  
+                {/* <img src={meme.randomImage} alt="meme-image" className="meme-image"/>  
                 <h2 className="meme--text top">{meme.topText}</h2>
-                <h2 className="meme--text bottom">{meme.bottomText}</h2>
+                <h2 className="meme--text bottom">{meme.bottomText}</h2> */}
                 <ImageCanvas meme={meme} />
-            </div>
-            
+            </div>            
         </div>
     )
 }
